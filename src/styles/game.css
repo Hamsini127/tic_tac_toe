@@ -1,0 +1,11 @@
+.game {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(253, 251, 251);
+ 
+  align-items: center;
+  margin-top: 135px;
+ 
+ 
+  
+}
