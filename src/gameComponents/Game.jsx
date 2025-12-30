@@ -1,4 +1,4 @@
-import "./styles/game.css"
+import "../styles/game.css"
 import Result from "./Result";
 import TicTacToeBox from "./TicTacToeBox";
 
