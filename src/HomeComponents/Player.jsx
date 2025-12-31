@@ -1,9 +1,12 @@
+import "../styles/player.css"
 
-
-function Player() {
+function Player(props) {
   return (
-    <button className = "player">
-      1 Player
+    <button className = "player" onClick = {props.onClick}>
+      {props.player} 
+      
     </button>
   )
 }
+
+export default Player;

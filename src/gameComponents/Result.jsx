@@ -1,18 +1,16 @@
+import "../styles/result.css"
+
+function Result (props) {
 
 
-function Result () {
-
-  const scores = {
-    wins  : 0,
-    loss: 0,
-    tie: 0 
-  }
 
   return (
     <div className="result">
-      wins = {scores.wins}
-      loss = {scores.loss}
-      tie = {scores.tie}
+      <p className = "winner">{props.result}</p>
+      {props.result &&
+      <button className="again" onClick={props.clickFunc}>Play Again</button>
+      }  
+     
       
     </div>
   )

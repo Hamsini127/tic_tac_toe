@@ -1,0 +1,15 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: space-between; 
+  height: 630px;
+ 
+}
+
+.playerBox {
+  display: flex;
+  column-gap: 50px;
+}
+
