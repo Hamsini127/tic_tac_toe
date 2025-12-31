@@ -1,11 +1,11 @@
 import Card from "./Card.jsx"
 import "../styles/TicTacToeBox.css"
-import { useState, useEffect } from "react";
-import Result from "./Result.jsx";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react"
+import Result from "./Result.jsx"
+import { useLocation } from "react-router-dom"
 
 
-
+//function to decide the results
 function calculateWinner(board) {
   const lines = [
     [0,1,2],[3,4,5],[6,7,8],
@@ -16,32 +16,32 @@ function calculateWinner(board) {
   for (const [a,b,c] of lines) {
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
       
-      return board[a]; // "X" or "O"
+      return board[a] // "X" or "O"
     }
   }
-  return null;
+  return null
 }
-
+// empty indexes for the computer to decide its moves
 function getEmptyIndexes(board) {
   return board
     .map((v, i) => (v === null ? i : null))
-    .filter(v => v !== null);
+    .filter(v => v !== null)
 }
 
 
 function TicTacToeBox () {
-  
-  const location = useLocation();
+  // useLocation to get the info of 1 player or 2 player game from another page
+  const location = useLocation()
   const isSinglePlayer = location.state?.isSinglePlayer ?? true;
   console.log(isSinglePlayer)
 
-  const [board, setBoard] = useState(Array(9).fill(null)); 
-  const [x,setX] = useState(true);   
-  const winner = calculateWinner(board);
+  const [board, setBoard] = useState(Array(9).fill(null)) 
+  const [x,setX] = useState(true)   
+  const winner = calculateWinner(board)
   
-  const isTie = !winner && board.every(Boolean); 
+  const isTie = !winner && board.every(Boolean)
 
-  let result = "";
+  let result = ""
   if (winner) {
   if (isSinglePlayer) {
     result = winner === "X" ? "You Won!" : "You Lost!";
@@ -49,54 +49,56 @@ function TicTacToeBox () {
     result = winner === "X" ? "Player 1 won!" : "Player 2 won!";
   }
   } else if (isTie) {
-    result = "Draw!";
+    result = "Draw!"
   }
   //console.log(result)
   
 
 
   const handleCardClick = (index) => {
-    if(winner) return;
+    if(winner) return
 
-    if (isSinglePlayer && x === false) return;
-    if (board[index] !== null) return;
+    if (isSinglePlayer && x === false) return
+    if (board[index] !== null) return
 
-    const nextBoard = [...board];
+    const nextBoard = [...board]
     nextBoard[index] = x ? "X" : "O";
 
-    setBoard(nextBoard);
+    setBoard(nextBoard)
 
-    setX(!x);
+    setX(!x)
    
-  };
-  useEffect(() => {
-    if (!isSinglePlayer) return;
+  }
 
-    if (x === true) return;
+
+  useEffect(() => {
+    if (!isSinglePlayer) return
+
+    if (x === true) return
 
     
-    if (winner || isTie) return;
+    if (winner || isTie) return
 
-    const emptyCells = getEmptyIndexes(board);
-    if (emptyCells.length === 0) return;
+    const emptyCells = getEmptyIndexes(board)
+    if (emptyCells.length === 0) return
 
-    const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
     
     const timer = setTimeout(() => {
-    const nextBoard = [...board];
-    nextBoard[randomIndex] = "O";
-    setBoard(nextBoard);
-    setX(true); 
-    }, 300);
+    const nextBoard = [...board]
+    nextBoard[randomIndex] = "O"
+    setBoard(nextBoard)
+    setX(true)
+    }, 300)
 
-    return () => clearTimeout(timer);
-  }, [board, x, isSinglePlayer, winner, isTie]);
+    return () => clearTimeout(timer)
+  }, [board, x, isSinglePlayer, winner, isTie])
 
 
   const resetGame=() => {
-    setBoard(Array(9).fill(null));
-    setX(true);
+    setBoard(Array(9).fill(null))
+    setX(true)
   }
 
   return(
@@ -120,7 +122,7 @@ function TicTacToeBox () {
     </>
 
     
-  );
+  )
 }
 
 export default TicTacToeBox;

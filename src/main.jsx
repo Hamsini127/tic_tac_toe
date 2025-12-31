@@ -9,7 +9,7 @@ import Home from './homeComponents/Home.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/tic_tac_toe">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game" element={<TicTacToeBox />} />

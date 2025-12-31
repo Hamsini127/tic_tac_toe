@@ -1,19 +1,23 @@
-import HImg from "./HImg";
-import Player from "./Player";
+import HImg from "./HImg"
+import Player from "./Player"
 import "../styles/home.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 
 
 
 function Home() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
+
+  // sending info of no.of palyers to other page
   const startGame = (isSinglePlayer) => {
     navigate("/game", {
       state: { isSinglePlayer }
     });
   };
+
+
   return (
 
     <div className="home">

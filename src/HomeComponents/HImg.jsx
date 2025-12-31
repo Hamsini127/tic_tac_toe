@@ -5,7 +5,7 @@ function HImg() {
   return(
   <img className="himg" src = {gameImg}>
   </img>
-  );
+  )
 }
 
-export default HImg
+export default HImg;
