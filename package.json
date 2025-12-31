@@ -1,8 +1,10 @@
 {
   "name": "tic_tac_toe",
+  "homepage": "https://Hamsini127.github.io/tic_tac_toe/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
